@@ -11,7 +11,14 @@ body {
     text-wrap: balance;
   }
 }
-
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
