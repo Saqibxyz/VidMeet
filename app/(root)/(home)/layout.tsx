@@ -1,6 +1,11 @@
 import Navbar from '@/components/ui/Navbar'
 import Sidebar from '@/components/ui/Sidebar'
+import { Metadata } from 'next';
 import React, { ReactNode } from 'react'
+export const metadata: Metadata = {
+    title: "VidMeet",
+    description: "Video conferencing web app",
+};
 
 const HomeLayout = ({ children }: { children: ReactNode }) => {
     return (
