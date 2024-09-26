@@ -4,25 +4,25 @@ import React from 'react'
 const Home = () => {
     const date = new Date();
 
-   
-    let hours = date.getHours();
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12 || 12; 
+    // Convert the date to India's time zone
+    const indiaTime = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
 
-  
+    let hours = indiaTime.getHours();
+    const minutes = indiaTime.getMinutes().toString().padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12;
+
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const months = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
     ];
 
-    const dayName = days[date.getDay()];
-    const day = date.getDate();
-    const monthName = months[date.getMonth()];
-    const year = date.getFullYear();
+    const dayName = days[indiaTime.getDay()];
+    const day = indiaTime.getDate();
+    const monthName = months[indiaTime.getMonth()];
+    const year = indiaTime.getFullYear();
 
-   
     const time = `${hours}:${minutes} ${ampm}`;
     const fullDate = `${dayName}, ${monthName} ${day}, ${year}`;
     return (
@@ -38,7 +38,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <MeetingTypeList/>
+            <MeetingTypeList />
         </section>
     )
 }
